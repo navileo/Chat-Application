@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container" id="auth-container">
+        <h1>Welcome to Chat App</h1>
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Choose a username" required>
+            <button type="submit">Join Chat</button>
+        </form>
+    </div>
+
+    <div class="chat-container" id="chat-container" style="display: none;">
+        <div class="sidebar">
+            <div class="room-management">
+                <h2>Rooms</h2>
+                <div class="room-list" id="room-list"></div>
+                <form id="create-room-form">
+                    <input type="text" id="new-room-name" placeholder="New room name">
+                    <button type="submit">Create Room</button>
+                </form>
+            </div>
+            <div class="user-list" id="user-list"></div>
+        </div>
+        
+        <div class="chat-area">
+            <div class="messages" id="messages"></div>
+            
+            <div class="message-input">
+                <form id="message-form">
+                    <div class="formatting-tools">
+                        <button type="button" class="format-btn" data-format="bold"><i class="fas fa-bold"></i></button>
+                        <button type="button" class="format-btn" data-format="italic"><i class="fas fa-italic"></i></button>
+                        <button type="button" class="format-btn" data-format="link"><i class="fas fa-link"></i></button>
+                        <button type="button" class="emoji-btn">😊</button>
+                    </div>
+                    <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
