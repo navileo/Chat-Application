@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
             socket.to(oldRoom).emit('message', {
                 username: 'System',
                 text: `${user.username} has left the room.`,
-                time: new Date().toLocaleTimeString(),
+                time: new Date().toISOString(),
                 system: true
             });
 
@@ -47,14 +47,14 @@ io.on('connection', (socket) => {
             socket.to(room).emit('message', {
                 username: 'System',
                 text: `${user.username} has joined the room.`,
-                time: new Date().toLocaleTimeString(),
+                time: new Date().toISOString(),
                 system: true
             });
 
             socket.emit('message', {
                 username: 'System',
                 text: `You joined ${room}.`,
-                time: new Date().toLocaleTimeString(),
+                time: new Date().toISOString(),
                 system: true
             });
             return;
@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
         socket.to(room).emit('message', {
             username: 'System',
             text: `${cleanUsername} has joined the chat.`,
-            time: new Date().toLocaleTimeString(),
+            time: new Date().toISOString(),
             system: true
         });
 
@@ -90,7 +90,7 @@ io.on('connection', (socket) => {
         socket.emit('message', {
             username: 'System',
             text: `Welcome to the ${room} room, ${cleanUsername}!`,
-            time: new Date().toLocaleTimeString(),
+            time: new Date().toISOString(),
             system: true
         });
     });
@@ -111,7 +111,7 @@ io.on('connection', (socket) => {
             io.to(user.room).emit('message', {
                 username: user.username,
                 text: msg,
-                time: new Date().toLocaleTimeString()
+                time: new Date().toISOString()
             });
         }
     });
@@ -123,7 +123,7 @@ io.on('connection', (socket) => {
             io.to(user.room).emit('message', {
                 username: user.username,
                 file: fileData,
-                time: new Date().toLocaleTimeString()
+                time: new Date().toISOString()
             });
         }
     });
@@ -136,7 +136,7 @@ io.on('connection', (socket) => {
             socket.to(user.room).emit('message', {
                 username: 'System',
                 text: `${user.username} has left the chat.`,
-                time: new Date().toLocaleTimeString(),
+                time: new Date().toISOString(),
                 system: true
             });
             activeUsernames.delete(user.username);

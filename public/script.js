@@ -195,9 +195,21 @@ function outputMessage(message) {
     div.style.opacity = '0';
     div.style.transform = 'translateY(20px)';
     
+    // Format timestamp to local time
+    const localTime = new Date(message.time).toLocaleTimeString([], { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
     if (message.system) {
         div.classList.add('system');
-        div.innerHTML = `<p class="message-text">${message.text}</p>`;
+        div.innerHTML = `
+            <div class="message-info" style="justify-content: center; font-size: 0.75rem; margin-bottom: 2px;">
+                <span class="time">${localTime}</span>
+            </div>
+            <p class="message-text">${message.text}</p>
+        `;
     } else {
         const isOwn = message.username === currentUsername;
         div.classList.add(isOwn ? 'own' : 'other');
@@ -225,7 +237,7 @@ function outputMessage(message) {
         div.innerHTML = `
             <div class="message-info">
                 <span class="sender">${isOwn ? 'You' : message.username}</span>
-                <span class="time">${message.time}</span>
+                <span class="time">${localTime}</span>
             </div>
             <p class="message-text">${content}</p>
         `;
