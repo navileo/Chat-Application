@@ -2,6 +2,10 @@
 
 ChatStream is a modern, stylish, and robust real-time chat application built with Node.js, Socket.io, and pure HTML/CSS/JS. It allows users to join chat rooms, communicate instantly, and enjoy a seamless experience across devices.
 
+## Live Demo
+
+https://chat-application-puf8.onrender.com/
+
 ## 🚀 Features
 
 - **✨ Modern UI/UX**: Responsive glassmorphism design with smooth animations and transitions.
