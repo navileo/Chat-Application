@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatStream - Real-Time Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="join-container" class="auth-container">
+        <div class="auth-card">
+            <h1><i class="fas fa-comments"></i> ChatStream</h1>
+            <p>Connect with anyone, anywhere.</p>
+            <form id="join-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="room-select">Select Room</label>
+                    <select id="room-select">
+                        <!-- Rooms will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="new-room">Or Create New Room</label>
+                    <div class="input-with-button">
+                        <input type="text" id="new-room" placeholder="New room name" autocomplete="off">
+                        <button type="button" id="create-room-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Join Chat</button>
+            </form>
+            <div id="error-message" class="error-msg"></div>
+        </div>
+    </div>
+
+    <div id="chat-container" class="chat-wrapper hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-comments"></i> ChatStream</h2>
+            </div>
+            <div class="sidebar-content">
+                <div class="section-title">Rooms</div>
+                <ul id="rooms-list" class="rooms-list">
+                    <!-- Room list items -->
+                </ul>
+                <div class="section-title">Current Info</div>
+                <div class="user-info">
+                    <p><i class="fas fa-user"></i> <span id="display-username"></span></p>
+                    <p><i class="fas fa-door-open"></i> <span id="display-room"></span></p>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <button id="leave-btn" class="btn-outline"><i class="fas fa-sign-out-alt"></i> Leave Chat</button>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <main class="chat-main">
+            <header class="chat-header">
+                <h3 id="room-name-display">General</h3>
+                <div class="header-actions">
+                    <button id="mobile-menu-btn" class="mobile-only"><i class="fas fa-bars"></i></button>
+                </div>
+            </header>
+
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages will appear here -->
+            </div>
+
+            <div class="chat-input-area">
+                <div id="emoji-picker" class="emoji-picker hidden"></div>
+                <form id="chat-form">
+                    <div class="input-wrapper">
+                        <button type="button" id="emoji-btn" class="icon-btn" title="Add Emoji"><i class="far fa-smile"></i></button>
+                        <button type="button" id="file-btn" class="icon-btn" title="Attach File"><i class="fas fa-paperclip"></i></button>
+                        <input type="file" id="file-input" class="hidden" accept="image/*,.pdf,.doc,.docx,.txt">
+                        <input 
+                            type="text" 
+                            id="msg" 
+                            placeholder="Type a message... (Use *bold*, _italic_)" 
+                            required 
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
